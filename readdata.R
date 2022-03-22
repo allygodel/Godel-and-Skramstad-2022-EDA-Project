@@ -10,4 +10,3 @@ CDCSARS <- "https://covidtracking.com/data/download/national-history.csv"
 download.file(CDCSARS, "data/file1.csv")
 SARSTracker <- read.csv(CDCSARS)
 
-
