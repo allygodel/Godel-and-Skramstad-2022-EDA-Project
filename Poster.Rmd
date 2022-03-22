@@ -1,0 +1,31 @@
+---
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Title
+
+## Authors
+
+## Author Affiliations
+
+## Introduction
+
+## Methods
+
+## Results
+
+## Discussion
+
+## References
+
+- Reference 1
+
+- Reference 2
+
+## Acknowledgements
+
