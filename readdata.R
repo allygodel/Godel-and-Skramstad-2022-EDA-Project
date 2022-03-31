@@ -58,25 +58,19 @@ FluView_StackedColumnChart_Data <-
 ##??
 
 print(InfluenzeSchool)
-InfluenzeSchool <-
-  rename(
-    Age = `Age group`)
-
 
 ## Graphs for Influenza School
 InfluenzeSchool %>% 
   filter(
-    LocationType == "Nation",
-    TimeFrame == "2018=2019"
-  ) %>% 
-  ggplot(aes(x = `Age group`, y = Data)) +
-  geom_point() +
+    LocationType == "Nation") %>% 
+  ggplot(aes(x = TimeFrame, y = Data, color = `Age group`)) +
+  geom_jitter()  +
   geom_line() +
   labs(
-    title = "Classes Moved to Distance Learning; Paper Materials Sent Home",
-    subtitle = "April 2020 to March 2021",
+    title = "Students Missing 11 or More Days; Illness and Injury",
+    subtitle = "2016-2019; Nation Wide",
     x = "Date",
-    y = "Percent of Classes"
+    y = "Age Group"
   ) +
   theme_bw(base_size = 16) +
   theme(
@@ -128,11 +122,8 @@ SARSSchool %>%
     x = "Date",
     y = "Percent of Classes"
   ) +
-  theme_bw(base_size = 16) +
-  theme(
-    legend.position = "bottom",
-    legend.direction = "vertical"
-  )
+  theme_bw(base_size = 16
+           )
 ggsave("covid_online.png")
 
 ##Paper
@@ -153,8 +144,7 @@ SARSSchool %>%
   theme_bw(base_size = 16) +
   theme(
     legend.position = "bottom",
-    legend.direction = "vertical"
-  )
+    legend.direction = "vertical")
 ggsave("covid_online.png")
 
 ##Cancelled
