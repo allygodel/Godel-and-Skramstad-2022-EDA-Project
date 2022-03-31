@@ -1,16 +1,6 @@
 
 library(tidyverse)
 library(readxl)
-library(TSstudio)
-
-read_excel("data/FluView_StackedColumnChart_Data.xlsx") %>% 
-  transmute(
-    year = YEAR,
-    week = WEEK,
-    total_specimens = `TOTAL SPECIMENS`,
-    end_date = paste(year, week),
-    date2 = as.Date(end_date, format = "%Y %V")
-  )
 
 KidsCount1_URL <- "https://datacenter.kidscount.org/rawdata.axd?ind=9714&loc=1"
 download.file(KidsCount1_URL, "data/KidsCountInfluenza.xlsx", mode = "wb")
@@ -32,12 +22,11 @@ SARSSchool <-
     Data = as.numeric(Data)
   ) %>% 
   print()
-#SARSSchool2 <- KIDSCountSARSNew
 
 CDCSARS <- "https://covidtracking.com/data/download/national-history.csv"
 download.file(CDCSARS, "data/CDCSARSTracker.csv")
 
-SARSTracker1 <- 
+SARSTracker <- 
   read_csv("data/CDCSARSTracker.csv") %>% 
   print()
 
@@ -46,6 +35,18 @@ SARSTracker1 <-
 view(FluView_StackedColumnChart_Data) %>% 
   print()
 
+read_excel("data/FluView_StackedColumnChart_Data.xlsx") %>% 
+  transmute(
+    Year = YEAR,
+    Week = WEEK,
+    Total = `TOTAL SPECIMENS`,
+    end_date = paste(year, week),
+    date2 = as.Date(end_date, format = "%Y %V")
+  )
+
+## Graphs for Influenza School TimeSeries
+print(FluView_StackedColumnChart_Data)
+
 ##??
 FluView_StackedColumnChart_Data <-
   rename(
@@ -53,77 +54,29 @@ FluView_StackedColumnChart_Data <-
   Year = YEAR,
   A = A2009_H1N1
   )
+##?? Weeks to dates
+##??
 
+print(InfluenzeSchool)
 InfluenzeSchool <-
   rename(
-    Age = Age_group
-  )
-##??
-
-## Graphs for Influenza School TimeSeries
-print(FluView_StackedColumnChart_Data)
-
-ggplot(InfluenzeSchool) +
-  geom_jitter(mapping = aes(x = TimeFrame, y = Data))
-
-##??
-ggplot(InfluenzeSchool) +   
-  geom_histogram(mapping = aes(x = Data))
-##??
-
-##Graphs for SARSTracker TimeSeries
-print(SARSTracker)
+    Age = `Age group`)
 
 
-##Graphs for SARSSchool 
-print(SARSSchool2)
-
-rename(SARSSchool2,
-       Time_Frame = TimeFrame1,
-       Time_Frame = TimeFrame2,
-       Time_Frame = TimeFrame3,
-       Time_Frame = TimeFrame4,
-       )
-
-##Online
-ggplot(SARSSchool2) +
-  geom_jitter(mapping = aes(x = TimeFrame1, y = OnlineResources))
-
-##Paper
-ggplot(SARSSchool2) +
-  geom_jitter(mapping = aes(x = TimeFrame2, y = PaperMaterials))
-
-##Cancelled
-ggplot(SARSSchool2) +
-  geom_jitter(mapping = aes(x = TimeFrame3, y = ClassesCancelled))
-
-##Other Change
-ggplot(SARSSchool2) +
-  geom_jitter(mapping = aes(x = TimeFrame4, y = OtherChange))
-
-##No Change, No Close
-ggplot(SARSSchool2) +
-  geom_jitter(mapping = aes(x = TimeFrame5, y = NoChangeNoClose))
-
-SARSSchool %>% 
-  distinct(COVIDImpactEduc)
-
-SARSSchool %>% 
-  distinct(LocationType)
-
-SARSSchool %>% 
+## Graphs for Influenza School
+InfluenzeSchool %>% 
   filter(
     LocationType == "Nation",
-    #COVIDImpactEduc == "Classes moved to distance learning: using online resources"
+    TimeFrame == "2018=2019"
   ) %>% 
-  ggplot(aes(x = end_date, y = Data)) +
+  ggplot(aes(x = `Age group`, y = Data)) +
   geom_point() +
   geom_line() +
   labs(
-    title = "Classes moved to distance learning: using online resources",
+    title = "Classes Moved to Distance Learning; Paper Materials Sent Home",
     subtitle = "April 2020 to March 2021",
     x = "Date",
-    y = "Percent of classes"
+    y = "Percent of Classes"
   ) +
   theme_bw(base_size = 16) +
   theme(
@@ -131,3 +84,142 @@ SARSSchool %>%
     legend.direction = "vertical"
   )
 ggsave("covid_online.png")
+
+
+##Graphs for SARSTracker TimeSeries
+print(SARSTracker)
+
+SARSTracker %>% 
+  ggplot(aes(x = date, y = positive)) +
+  geom_point() +
+  geom_line() +
+  labs(
+    title = "Positive SARS-CoV-2 Tests",
+    subtitle = "April 2020 to March 2021",
+    x = "Date",
+    y = "Number of Cases"
+  ) +
+  theme_bw(base_size = 16) +
+  theme(
+    legend.position = "bottom",
+    legend.direction = "vertical"
+  )
+ggsave("covid_online.png") 
+##How to make Number's of Cases not scientific 
+
+##Graphs for SARSSchool 
+print(SARSSchool)
+
+SARSSchool %>% 
+  distinct(COVIDImpactEduc)
+
+##Online
+SARSSchool %>% 
+  filter(
+    LocationType == "Nation",
+    COVIDImpactEduc == "Classes moved to distance learning: using online resources"
+  ) %>% 
+  ggplot(aes(x = end_date, y = Data)) +
+  geom_point() +
+  geom_line() +
+  labs(
+    title = "Classes Moved to Distance Learning: Using Online Resources",
+    subtitle = "April 2020 to March 2021",
+    x = "Date",
+    y = "Percent of Classes"
+  ) +
+  theme_bw(base_size = 16) +
+  theme(
+    legend.position = "bottom",
+    legend.direction = "vertical"
+  )
+ggsave("covid_online.png")
+
+##Paper
+SARSSchool %>% 
+  filter(
+    LocationType == "Nation",
+    COVIDImpactEduc == "Classes moved to distance learning: using paper materials sent home"
+  ) %>% 
+  ggplot(aes(x = end_date, y = Data)) +
+  geom_point() +
+  geom_line() +
+  labs(
+    title = "Classes Moved to Distance Learning; Paper Materials Sent Home",
+    subtitle = "April 2020 to March 2021",
+    x = "Date",
+    y = "Percent of Classes"
+  ) +
+  theme_bw(base_size = 16) +
+  theme(
+    legend.position = "bottom",
+    legend.direction = "vertical"
+  )
+ggsave("covid_online.png")
+
+##Cancelled
+SARSSchool %>% 
+  filter(
+    LocationType == "Nation",
+    COVIDImpactEduc == "Classes were cancelled"
+  ) %>% 
+  ggplot(aes(x = end_date, y = Data)) +
+  geom_point() +
+  geom_line() +
+  labs(
+    title = "Classes Cancelled",
+    subtitle = "April 2020 to March 2021",
+    x = "Date",
+    y = "Percent of Classes"
+  ) +
+  theme_bw(base_size = 16) +
+  theme(
+    legend.position = "bottom",
+    legend.direction = "vertical"
+  )
+ggsave("covid_online.png")
+
+##Other Change
+SARSSchool %>% 
+  filter(
+    LocationType == "Nation",
+    COVIDImpactEduc == "Classes change in some other way"
+  ) %>% 
+  ggplot(aes(x = end_date, y = Data)) +
+  geom_point() +
+  geom_line() +
+  labs(
+    title = "Classes Changed in Some Other Way",
+    subtitle = "April 2020 to March 2021",
+    x = "Date",
+    y = "Percent of Classes"
+  ) +
+  theme_bw(base_size = 16) +
+  theme(
+    legend.position = "bottom",
+    legend.direction = "vertical"
+  )
+ggsave("covid_online.png")
+
+##No Change, No Close
+SARSSchool %>% 
+  filter(
+    LocationType == "Nation",
+    COVIDImpactEduc == "No change to classes because schools did not close"
+  ) %>% 
+  ggplot(aes(x = end_date, y = Data)) +
+  geom_point() +
+  geom_line() +
+  labs(
+    title = "No Change to Classes; Schools Did Not Close",
+    subtitle = "April 2020 to March 2021",
+    x = "Date",
+    y = "Percent of Classes"
+  ) +
+  theme_bw(base_size = 16) +
+  theme(
+    legend.position = "bottom",
+    legend.direction = "vertical"
+  )
+ggsave("covid_online.png")
+
