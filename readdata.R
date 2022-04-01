@@ -21,7 +21,7 @@ SARSSchool <-
     end_date = as.Date(end_date, format = "%b %e, %Y"),
     Data = as.numeric(Data)
   ) %>% 
-  print()
+  print() ##??
 
 CDCSARS <- "https://covidtracking.com/data/download/national-history.csv"
 download.file(CDCSARS, "data/CDCSARSTracker.csv")
@@ -35,27 +35,35 @@ SARSTracker <-
 view(FluView_StackedColumnChart_Data) %>% 
   print()
 
-read_excel("data/FluView_StackedColumnChart_Data.xlsx") %>% 
-  transmute(
+##read_excel("data/FluView_StackedColumnChart_Data.xlsx") %>% 
+  tranmute(
     Year = YEAR,
     Week = WEEK,
     Total = `TOTAL SPECIMENS`,
     end_date = paste(year, week),
     date2 = as.Date(end_date, format = "%Y %V")
-  )
+  ) ##??
 
 ## Graphs for Influenza School TimeSeries
 print(FluView_StackedColumnChart_Data)
 
-##??
-FluView_StackedColumnChart_Data <-
-  rename(
-  FluView_StackedColumnChart_Data,
-  Year = YEAR,
-  A = A2009_H1N1
+FluView_StackedColumnChart_Data %>% 
+  ggplot(aes(x = WEEK, y = `TOTAL SPECIMENS`)) +
+  geom_jitter()  +
+  geom_line() +
+  labs(
+    title = "Students Missing 11 or More Days; Illness and Injury",
+    subtitle = "2018-2019; Nation Wide",
+    x = "Oct. 1, 2018 ~ Sep. 23, 2019",
+    y = "Total Specimens"
+  ) +
+  theme_bw(base_size = 16) +
+  theme(
+    legend.position = "bottom",
+    legend.direction = "vertical"
   )
-##?? Weeks to dates
-##??
+ggsave("covid_online.png")
+
 
 print(InfluenzeSchool)
 
@@ -77,7 +85,7 @@ InfluenzeSchool %>%
     legend.position = "bottom",
     legend.direction = "vertical"
   )
-ggsave("covid_online.png")
+ggsave("covid_online.png") ##Connect with line?
 
 
 ##Graphs for SARSTracker TimeSeries
@@ -103,6 +111,7 @@ ggsave("covid_online.png")
 
 ##Graphs for SARSSchool 
 print(SARSSchool)
+
 
 SARSSchool %>% 
   distinct(COVIDImpactEduc)

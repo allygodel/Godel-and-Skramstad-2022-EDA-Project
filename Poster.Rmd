@@ -1,5 +1,8 @@
 ---
 output: github_document
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r setup, include=FALSE}
@@ -9,13 +12,62 @@ library(tidyverse)
 
 ## Title
 
+The Impact on Education Due to SARS-CoV-2 in 2020 - 2021 Versus the
+Impact on Education Due to Influenza in 2018-2019
+
 ## Authors
+
+Allyson Godel
 
 ## Author Affiliations
 
+Dr. Merkord
+
 ## Introduction
 
+As SARS-CoV-2 began its tyranny throughout the world, many variables of
+everyone's life were altered in order to battle this change. Along with
+excessive hand washing, toilet paper hoarding, and Zoom stocks
+skyrocketing, how education was given and received was altered in both
+good and bad ways during this panic. Using the comparison of positive
+tests regarding both SARS-CoV-2 and Influenza in 2018-2019 allows us to
+visually observe the differences in how these viruses caused change
+throughout the education system.
+
 ## Methods
+
+Website // button clicked // which dataset taken // Websites used:
+\><https://gis.cdc.gov/> In order to get to the Influenza dataset, a
+simple "Influenza" search in the top right search bar will result in
+several datasets. The data set titled "Data Visualization and
+Interactive Mapping for Flu Surveillance \| Place and Health" will be
+where we find our dataset. Once this link is clicked, a web page
+explaining the Flu Mapping tool will lead you to the "FluView
+Interactive" tool, which is located under the heading "Interactive Flu
+Surveillance. Once this link is clicked, we can simply follow the prompt
+to "view both influenza laboratory data and medically attend visits for
+influenza-like illness…". Once on this interactive page, we specify our
+"Season" as 2018-2019, then observe the data produced on the "Stacked
+Column Chart WHO/NREVSS". This dataset allows us to see who was
+previously affected by influenza in the year 2018-2019. \>
+<https://datacenter.kidscount.org/> By selecting "View U.S. Data", you
+will be able to view any data presented on this website. By specifying
+and clicking "COVID-19" under the "Special Topics", you are able to
+scroll down and find the "Education Indicators" topic, which will house
+our data set under the "School Age" section. We are able to open the
+dataset "Change in how households with children received education due
+to the coronavirus pandemic", which houses a portion of the dataset
+used. By selecting "View U.S. Data", you will be able to view any data
+presented on this website. By specifying and clicking "Education" under
+the "Topics" tab, you are able to scroll down and find the "School Age"
+topic, which will house our data set under the "Children who missed 11
+or more days of school per year due to illness or injury".
+Specifications of year can be made. In this case, 2018-2019 was viewed
+and used in this dataset. \> <https://covidtracking.com/data/download>
+This website allows you to download specific state information regarding
+trends during the SARS-CoV-2 pandemic. For this research, we will be
+using the "summary data for the United States", which can be downloaded
+directly under the "National data" heading.
 
 ## Results
 
