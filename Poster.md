@@ -68,13 +68,15 @@ Dr. Merkord
 > increase in altered education before, during, and after the SAR-CoV-2
 > pandemic.
 
-![](Influenza_online.png)![](InfluenzaSchool_online.png)
+<img src="Influenza_online.png" width="80%"/>![](InfluenzaSchool_online.png)
 
 > S - Estimates suppressed when the 95% confidence interval is greater
 > than 20 percentage points or 1.2 times the estimate. N.A. – Data not
 > available. Percentages exclude missing data. Weighted percentages were
 > applied to the estimates of those missing to derive overall estimates
 > for the number of children.
+
+![](covid_online.png)
 
 ![](covidschool1_online.png)
 
