@@ -27,48 +27,45 @@ Dr. Merkord
 
     Websites used:
 
-> <https://gis.cdc.gov/> In order to get to the Influenza data set, a
-> simple “Influenza” search in the top right search bar will result in
-> several data sets. The data set titled “Data Visualization and
-> Interactive Mapping for Flu Surveillance \| Place and Health” will be
-> where we find our data sets. Once this link is clicked, a web page
-> explaining the Flu Mapping tool will lead you to the “FluView
-> Interactive” tool, which is located under the heading “Interactive Flu
-> Surveillance. Once this link is clicked, we can simply follow the
-> prompt to”view both influenza laboratory data and medically attend
-> visits for influenza-like illness…“. Once on this interactive page, we
-> specify our”Season” as 2018-2019, then observe the data produced on
-> the “Stacked Column Chart WHO/NREVSS”. This data set allows us to see
-> who was previously affected by influenza in the year 2018-2019.
+<https://gis.cdc.gov/> In order to get to the Influenza data set, a
+simple “Influenza” search in the top right search bar will result in
+several data sets. The data set titled “Data Visualization and
+Interactive Mapping for Flu Surveillance \| Place and Health” will be
+where we find our data sets. Once this link is clicked, a web page
+explaining the Flu Mapping tool will lead you to the “FluView
+Interactive” tool, which is located under the heading “Interactive Flu
+Surveillance. Once this link is clicked, we can simply follow the prompt
+to”view both influenza laboratory data and medically attend visits for
+influenza-like illness…“. Once on this interactive page, we specify
+our”Season” as 2018-2019, then observe the data produced on the “Stacked
+Column Chart WHO/NREVSS”. This data set allows us to see who was
+previously affected by influenza in the year 2018-2019.
 
-> <https://datacenter.kidscount.org/> By selecting “View U.S. Data”, you
-> will be able to view any data presented on this website. By specifying
-> and clicking “COVID-19” under the “Special Topics”, you are able to
-> scroll down and find the “Education Indicators” topic, which will
-> house our data set under the “School Age” section. We are able to open
-> the data set “Change in how households with children received
-> education due to the SARS-CoV-2 pandemic”, which houses a portion of
-> the data set used. By selecting “View U.S. Data”, you will be able to
-> view any data presented on this website. By specifying and clicking
-> “Education” under the “Topics” tab, you are able to scroll down and
-> find the “School Age” topic, which will house our data set under the
-> “Children who missed 11 or more days of school per year due to illness
-> or injury”. Specifications of year can be made. In this case,
-> 2018-2019 was viewed and used in this data set.
-> <https://covidtracking.com/data/download> This website allows you to
-> download specific state information regarding trends during the
-> SARS-CoV-2 pandemic. For this research, we will be using the “summary
-> data for the United States”, which can be downloaded directly under
-> the “National data” heading.
+<https://datacenter.kidscount.org/> By selecting “View U.S. Data”, you
+will be able to view any data presented on this website. By specifying
+and clicking “COVID-19” under the “Special Topics”, you are able to
+scroll down and find the “Education Indicators” topic, which will house
+our data set under the “School Age” section. We are able to open the
+data set “Change in how households with children received education due
+to the SARS-CoV-2 pandemic”, which houses a portion of the data set
+used. By selecting “View U.S. Data”, you will be able to view any data
+presented on this website. By specifying and clicking “Education” under
+the “Topics” tab, you are able to scroll down and find the “School Age”
+topic, which will house our data set under the “Children who missed 11
+or more days of school per year due to illness or injury”.
+Specifications of year can be made. In this case, 2018-2019 was viewed
+and used in this data set. <https://covidtracking.com/data/download>
+This website allows you to download specific state information regarding
+trends during the SARS-CoV-2 pandemic. For this research, we will be
+using the “summary data for the United States”, which can be downloaded
+directly under the “National data” heading.
 
 ## Results
 
-> After selecting the data necessary to make an assessment, not only was
-> there an increase in absences during the height of Influenza, but an
-> increase in altered education before, during, and after the SAR-CoV-2
-> pandemic.
-
-<img src="Influenza_online.png" width="80%"/>![](InfluenzaSchool_online.png)
+After selecting the data necessary to make an assessment, not only was
+there an increase in absences during the height of Influenza, but an
+increase in altered education before, during, and after the SAR-CoV-2
+pandemic.
 
 > S - Estimates suppressed when the 95% confidence interval is greater
 > than 20 percentage points or 1.2 times the estimate. N.A. – Data not
@@ -76,12 +73,12 @@ Dr. Merkord
 > applied to the estimates of those missing to derive overall estimates
 > for the number of children.
 
-![](covid_online.png)
+![](Poster_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
-![](covidschool1_online.png)
+    ## geom_path: Each group consists of only one observation. Do you need to adjust
+    ## the group aesthetic?
 
-![](covidschool2_online.png) ![](covidschool3_online.png)
-![](covidschool4_online.png) ![](covidschool5_online.png)
+![](Poster_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
 > S - Estimates suppressed when the effective sample size is less than
 > 30 or the 90% confidence interval is greater than 30 percentage points
